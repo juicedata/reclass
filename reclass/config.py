@@ -9,9 +9,9 @@
 
 import yaml, os, optparse, posix, sys
 
-import errors
-from defaults import *
-from constants import MODE_NODEINFO, MODE_INVENTORY
+from . import errors
+from .defaults import *
+from .constants import MODE_NODEINFO, MODE_INVENTORY
 
 def make_db_options_group(parser, defaults={}):
     ret = optparse.OptionGroup(parser, 'Database options',
