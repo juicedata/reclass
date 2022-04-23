@@ -183,7 +183,7 @@ def get_options(name, version, description,
 
 
 def vvv(msg):
-    #print >>sys.stderr, msg
+    # print(msg, file=sys.stderr)
     pass
 
 
@@ -193,7 +193,9 @@ def find_and_read_configfile(filename=CONFIG_FILE_NAME,
         f = os.path.join(d, filename)
         if os.access(f, os.R_OK):
             vvv('Using config file: {0}'.format(f))
-            return yaml.safe_load(file(f))
+            with open(f, 'r') as fp:
+                data = yaml.safe_load(fp)
+            return data
         elif os.path.isfile(f):
             raise PermissionsError('cannot read %s' % f)
     return {}
