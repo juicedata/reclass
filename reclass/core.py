@@ -47,7 +47,7 @@ class Core(object):
             regexp = True
         try:
             key = lexer.get_token()
-        except ValueError, e:
+        except ValueError as e:
             raise MappingFormatError('Error in mapping "{0}": missing closing '
                                      'quote (or slash)'.format(instr))
         if regexp:
@@ -92,7 +92,7 @@ class Core(object):
             if klass not in seen:
                 try:
                     class_entity = self._storage.get_class(klass)
-                except ClassNotFound, e:
+                except ClassNotFound as e:
                     e.set_nodename(nodename)
                     raise e
 
@@ -143,7 +143,7 @@ class Core(object):
         nodes = {}
         applications = {}
         classes = {}
-        for f, nodeinfo in entities.iteritems():
+        for f, nodeinfo in entities.items():
             d = nodes[f] = self._nodeinfo_as_dict(f, nodeinfo)
             for a in d['applications']:
                 if a in applications:

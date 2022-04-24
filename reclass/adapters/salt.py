@@ -68,7 +68,7 @@ def top(minion_id, storage_type=OPT_STORAGE_TYPE,
     else:
         data = reclass.inventory()
         nodes = {}
-        for node_id, node_data in data['nodes'].iteritems():
+        for node_id, node_data in data['nodes'].items():
             env = node_data['environment']
             if env not in nodes:
                 nodes[env] = {}
@@ -111,9 +111,9 @@ def cli():
                        classes_uri=options.classes_uri,
                        class_mappings=class_mappings)
 
-        print output(data, options.output, options.pretty_print)
+        print(output(data, options.output, options.pretty_print))
 
-    except ReclassException, e:
+    except ReclassException as e:
         e.exit_with_message(sys.stderr)
 
     sys.exit(posix.EX_OK)

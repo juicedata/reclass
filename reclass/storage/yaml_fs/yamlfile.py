@@ -25,11 +25,10 @@ class YamlFile(object):
     path = property(lambda self: self._path)
 
     def _read(self):
-        fp = file(self._path)
-        data = yaml.safe_load(fp)
+        with open(self._path, 'r') as fp:
+            data = yaml.safe_load(fp)
         if data is not None:
             self._data = data
-        fp.close()
 
     def get_entity(self, name=None, default_environment=None):
         classes = self._data.get('classes')

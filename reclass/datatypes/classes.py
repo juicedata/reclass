@@ -7,7 +7,6 @@
 # Released under the terms of the Artistic Licence 2.0
 #
 
-import types
 import os
 from reclass.errors import InvalidClassnameError
 
@@ -51,7 +50,7 @@ class Classes(object):
             self.append_if_new(i)
 
     def _assert_is_string(self, item):
-        if not isinstance(item, types.StringTypes):
+        if not isinstance(item, str):
             raise TypeError('%s instances can only contain strings, '\
                             'not %s' % (self.__class__.__name__, type(item)))
 
