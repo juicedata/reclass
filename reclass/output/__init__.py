@@ -6,6 +6,9 @@
 # Copyright © 2007–14 martin f. krafft <madduck@madduck.net>
 # Released under the terms of the Artistic Licence 2.0
 #
+import importlib
+
+
 class OutputterBase(object):
 
     def __init__(self):
@@ -20,7 +23,7 @@ class OutputLoader(object):
     def __init__(self, outputter):
         self._name = 'reclass.output.' + outputter + '_outputter'
         try:
-            self._module = __import__(self._name, globals(), locals(), self._name)
+            self._module = importlib.import_module(self._name)
         except ImportError:
             raise NotImplementedError
 

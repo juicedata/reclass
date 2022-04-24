@@ -18,7 +18,7 @@ FILE_EXTENSION = '.yml'
 STORAGE_NAME = 'yaml_fs'
 
 def vvv(msg):
-    #print >>sys.stderr, msg
+    #print(msg, file=sys.stderr)
     pass
 
 class ExternalNodeStorage(NodeStorageBase):
