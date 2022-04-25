@@ -114,7 +114,7 @@ class Parameters(object):
             ret = [cur]
             offset = 1
 
-        for i in xrange(len(new)):
+        for i in range(len(new)):
             ret.append(self._merge_recurse(None, new[i], path.new_subpath(offset + i)))
         return ret
 
